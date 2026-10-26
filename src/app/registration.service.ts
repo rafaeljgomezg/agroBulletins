@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 
 export const ACTIVEPIECES_WEBHOOK_URL =
-  'https://cloud.activepieces.com/api/v1/webhooks/aibYC4KKD4HGKZMcO4jUq';
+  'https://cloud.activepieces.com/api/v1/webhooks/aibYC4KKD4HGKZMcO4jUq/sync';
 
 export interface RegistrationPayload {
   nome: string;
