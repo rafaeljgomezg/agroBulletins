@@ -1,0 +1,92 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.status-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 18% 15%, rgb(211 225 192 / 45%), transparent 33%),
+    #f5f7f2;
+}
+
+.status-card {
+  width: min(100%, 510px);
+  padding: 54px 48px;
+  border: 1px solid #e3e9e0;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgb(31 58 41 / 7%);
+  text-align: center;
+}
+
+.success-icon {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 25px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e7f0e3;
+}
+
+.success-icon svg {
+  width: 37px;
+  fill: none;
+  stroke: #315d41;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #52705e;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+}
+
+h1 {
+  margin: 13px 0;
+  color: #193b2c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 7vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.message {
+  margin: 0 auto 28px;
+  color: #617168;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.primary-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border-radius: 9px;
+  background: #24543b;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primary-link:hover {
+  background: #193f2c;
+}
+
+@media (max-width: 480px) {
+  .status-card {
+    padding: 40px 24px;
+  }
+}

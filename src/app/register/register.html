@@ -1,0 +1,109 @@
+<main class="register-page">
+  <header class="brand">
+    <a class="brand-mark" routerLink="/cadastro" aria-label="AgroBulletins, ir para o cadastro">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M26.5 5.5C16 5.8 8 8.8 8 17a7 7 0 0 0 7 7c8.2 0 11.2-8 11.5-18.5Z" />
+        <path d="M5.5 27c3.2-6.2 8.1-10.5 15-14" />
+      </svg>
+    </a>
+    <span>Agro<span class="brand-accent">Bulletins</span></span>
+  </header>
+
+  <section class="register-layout" aria-labelledby="register-title">
+    <div class="intro">
+      <p class="eyebrow"><span></span> INFORMAÇÃO PARA O CAMPO</p>
+      <h1>Decisões mais claras, <em>colheitas mais fortes.</em></h1>
+      <p class="intro-copy">
+        Receba informações e ferramentas para apoiar as decisões do seu negócio agrícola.
+        Sua conta começa com um plano de teste.
+      </p>
+    </div>
+
+    <section class="form-card">
+      <div class="card-heading">
+        <p class="eyebrow">CRIE SUA CONTA</p>
+        <h2 id="register-title">Comece hoje</h2>
+        <p>Preencha seus dados para ativar seu acesso de teste.</p>
+      </div>
+
+      @if (feedback(); as notice) {
+        <div
+          class="feedback"
+          [class.feedback-duplicate]="notice.kind === 'duplicate'"
+          role="alert"
+          aria-live="assertive"
+        >
+          <span aria-hidden="true">{{ notice.kind === 'duplicate' ? '!' : '×' }}</span>
+          <p>{{ notice.message }}</p>
+        </div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input
+            id="nome"
+            formControlName="nome"
+            type="text"
+            autocomplete="name"
+            placeholder="Ex.: Maria Silva"
+            [attr.aria-invalid]="form.controls.nome.invalid && form.controls.nome.touched"
+            [attr.aria-describedby]="form.controls.nome.invalid && form.controls.nome.touched ? 'nome-error' : null"
+          />
+          @if (form.controls.nome.invalid && form.controls.nome.touched) {
+            <p class="field-error" id="nome-error">Informe seu nome (máximo de 100 caracteres).</p>
+          }
+        </div>
+
+        <div class="field">
+          <label for="whatsapp">WhatsApp</label>
+          <input
+            id="whatsapp"
+            formControlName="whatsapp"
+            type="tel"
+            autocomplete="tel"
+            inputmode="tel"
+            placeholder="Ex.: +55 (11) 91234-5678"
+            [attr.aria-invalid]="form.controls.whatsapp.invalid && form.controls.whatsapp.touched"
+            [attr.aria-describedby]="form.controls.whatsapp.invalid && form.controls.whatsapp.touched ? 'whatsapp-error' : null"
+          />
+          @if (form.controls.whatsapp.invalid && form.controls.whatsapp.touched) {
+            <p class="field-error" id="whatsapp-error">Informe um número válido do Brasil, com DDD. Ex.: (11) 91234-5678.</p>
+          }
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            formControlName="email"
+            type="email"
+            autocomplete="email"
+            placeholder="voce@exemplo.com.br"
+            [attr.aria-invalid]="form.controls.email.invalid && form.controls.email.touched"
+            [attr.aria-describedby]="form.controls.email.invalid && form.controls.email.touched ? 'email-error' : null"
+          />
+          @if (form.controls.email.invalid && form.controls.email.touched) {
+            <p class="field-error" id="email-error">Informe um e-mail válido.</p>
+          }
+        </div>
+
+        <button class="submit-button" type="submit" [disabled]="isSubmitting()">
+          @if (isSubmitting()) {
+            <span class="spinner" aria-hidden="true"></span>
+            Criando sua conta…
+          } @else {
+            Criar conta grátis
+            <span aria-hidden="true">→</span>
+          }
+        </button>
+        <p class="form-footnote">Ao continuar, você aceita receber um e-mail com as instruções para começar.</p>
+      </form>
+    </section>
+  </section>
+
+  <footer class="page-footer">
+    <span>© AgroBulletins</span>
+    <span>Informação que faz crescer.</span>
+  </footer>
+</main>
