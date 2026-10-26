@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
@@ -6,9 +7,8 @@ import { brazilianPhoneValidator, normalizeBrazilianPhone } from '../brazil-phon
 import { RegistrationError, RegistrationService } from '../registration.service';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [NgOptimizedImage, ReactiveFormsModule],
   selector: 'app-register',
-  styleUrl: './register.css',
   templateUrl: './register.html',
 })
 export class Register {
