@@ -19,6 +19,11 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'privacidade',
+    loadComponent: () =>
+      import('./privacidade/privacidade').then((component) => component.Privacidade),
+  },
+  {
     path: '**',
     loadComponent: () => import('./not-found/not-found').then((component) => component.NotFound),
   },
