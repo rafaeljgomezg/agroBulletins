@@ -25,10 +25,11 @@ export class Cancel {
   );
 
   protected async confirmCancellation(): Promise<void> {
-    if (!this.token || this.state() !== 'confirmation') {
+    if (!this.token || !['confirmation', 'error'].includes(this.state())) {
       return;
     }
 
+    this.errorMessage.set('');
     this.state.set('submitting');
     try {
       await firstValueFrom(this.registrationService.cancel(this.token));

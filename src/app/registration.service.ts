@@ -97,9 +97,7 @@ export class RegistrationService {
         const status =
           typeof result?.['status'] === 'string' ? result['status'].toLowerCase() : '';
         const code = typeof result?.['code'] === 'string' ? result['code'].toUpperCase() : '';
-        const emptyAcknowledgement = result !== null && Object.keys(result).length === 0;
         if (
-          emptyAcknowledgement ||
           result?.['success'] === true ||
           ['canceled', 'cancelled'].includes(status) ||
           ['CANCELED', 'CANCELLED'].includes(code)

@@ -86,13 +86,18 @@ describe('RegistrationService', () => {
     expect(completed).toBe(true);
   });
 
-  it('aceita um objeto vazio como confirmação HTTP bem-sucedida do webhook', () => {
+  it('não aceita uma resposta vazia como confirmação de cancelamento', () => {
+    let receivedError: unknown;
     let completed = false;
-    service.cancel('token-de-acesso').subscribe(() => (completed = true));
+    service.cancel('token-de-acesso').subscribe({
+      next: () => (completed = true),
+      error: (error: unknown) => (receivedError = error),
+    });
 
     httpTestingController.expectOne(CANCELLATION_WEBHOOK_URL).flush({});
 
-    expect(completed).toBe(true);
+    expect(completed).toBe(false);
+    expect(receivedError).toBeInstanceOf(CancellationError);
   });
 
   it('não trata uma resposta sem confirmação como cancelamento concluído', () => {
