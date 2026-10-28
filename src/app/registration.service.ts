@@ -10,7 +10,7 @@ export interface RegistrationPayload {
   whatsapp: string;
   email: string;
   plan: 'TRIAL';
-  status_pagamento: 'TRIAL';
+  status_pagamento: 'PREMIUM';
 }
 
 type ErrorKind = 'duplicate' | 'error';
