@@ -19,6 +19,10 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'cancelar',
+    loadComponent: () => import('./cancel/cancel').then((component) => component.Cancel),
+  },
+  {
     path: 'privacidade',
     loadComponent: () =>
       import('./privacidade/privacidade').then((component) => component.Privacidade),

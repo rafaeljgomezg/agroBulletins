@@ -4,6 +4,8 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 
 export const ACTIVEPIECES_WEBHOOK_URL =
   'https://cloud.activepieces.com/api/v1/webhooks/aibYC4KKD4HGKZMcO4jUq/sync';
+export const CANCELLATION_WEBHOOK_URL =
+  'https://cloud.activepieces.com/api/v1/webhooks/8y9NATCryBPAfTFiIxAdh';
 
 export interface RegistrationPayload {
   nome: string;
@@ -23,6 +25,13 @@ export class RegistrationError extends Error {
   ) {
     super(message);
     this.name = 'RegistrationError';
+  }
+}
+
+export class CancellationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'CancellationError';
   }
 }
 
@@ -76,6 +85,44 @@ export class RegistrationService {
         }
         return throwError(
           () => new RegistrationError('error', 'Ocorreu um erro inesperado ao criar sua conta.'),
+        );
+      }),
+    );
+  }
+
+  cancel(token: string): Observable<void> {
+    return this.http.post<unknown>(CANCELLATION_WEBHOOK_URL, { token }).pipe(
+      map((response) => {
+        const result = asRecord(response);
+        const status =
+          typeof result?.['status'] === 'string' ? result['status'].toLowerCase() : '';
+        const code = typeof result?.['code'] === 'string' ? result['code'].toUpperCase() : '';
+        if (
+          result?.['success'] === true ||
+          ['canceled', 'cancelled'].includes(status) ||
+          ['CANCELED', 'CANCELLED'].includes(code)
+        ) {
+          return;
+        }
+
+        throw new CancellationError(
+          'Não foi possível confirmar o cancelamento. Tente novamente mais tarde.',
+        );
+      }),
+      catchError((error: unknown) => {
+        if (error instanceof CancellationError) {
+          return throwError(() => error);
+        }
+        if (error instanceof HttpErrorResponse) {
+          return throwError(
+            () =>
+              new CancellationError(
+                'Não foi possível conectar ao serviço de cancelamento. Tente novamente mais tarde.',
+              ),
+          );
+        }
+        return throwError(
+          () => new CancellationError('Ocorreu um erro inesperado ao cancelar sua conta.'),
         );
       }),
     );

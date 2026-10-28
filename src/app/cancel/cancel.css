@@ -1,0 +1,173 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.status-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 18% 15%, rgb(211 225 192 / 45%), transparent 33%),
+    #f5f7f2;
+}
+
+.status-card {
+  width: min(100%, 510px);
+  padding: 54px 48px;
+  border: 1px solid #e3e9e0;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgb(31 58 41 / 7%);
+  text-align: center;
+}
+
+.status-icon {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 25px;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.status-icon svg {
+  width: 37px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.success-icon {
+  background: #e7f0e3;
+}
+
+.success-icon svg {
+  stroke: #315d41;
+}
+
+.cancel-icon {
+  background: #fff3e8;
+}
+
+.cancel-icon svg {
+  stroke: #98602b;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #52705e;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+}
+
+h1 {
+  margin: 13px 0;
+  color: #193b2c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 7vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.message {
+  margin: 0 auto 28px;
+  color: #617168;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.error-message {
+  margin: 0 0 20px;
+  color: #862d29;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
+.cancel-button,
+.primary-link {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 9px;
+  background: #8d302b;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background: #70241f;
+}
+
+.cancel-button:focus-visible,
+.primary-link:focus-visible,
+.secondary-link:focus-visible {
+  outline: 3px solid #52775d;
+  outline-offset: 3px;
+}
+
+.cancel-button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.primary-link {
+  background: #24543b;
+}
+
+.primary-link:hover {
+  background: #193f2c;
+}
+
+.secondary-link {
+  color: #52705e;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #b8c6b8;
+  text-underline-offset: 4px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(255 255 255 / 45%);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-card {
+    padding: 40px 24px;
+  }
+}

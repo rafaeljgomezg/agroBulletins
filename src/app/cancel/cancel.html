@@ -1,0 +1,55 @@
+<main class="status-page">
+  <section class="status-card" aria-labelledby="cancel-title">
+    @if (state() === 'success') {
+      <div class="status-icon success-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <path d="m14 24 7 7 14-15" />
+        </svg>
+      </div>
+      <p class="eyebrow">CANCELAMENTO CONCLUÍDO</p>
+      <h1 id="cancel-title">Sua conta foi cancelada</h1>
+      <p class="message" role="status" aria-live="polite">
+        Seu token de acesso foi removido e seu plano passou para CANCELED. Você não poderá mais
+        acessar sua conta.
+      </p>
+      <a class="primary-link" routerLink="/cadastro">Voltar ao início</a>
+    } @else {
+      <div class="status-icon cancel-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <path d="M24 14v12m0 8h.02M8 39h32L24 7 8 39Z" />
+        </svg>
+      </div>
+      <p class="eyebrow">CANCELAMENTO DE CONTA</p>
+      <h1 id="cancel-title">Tem certeza de que deseja cancelar sua conta?</h1>
+      <p class="message">
+        Ao confirmar, seu token de acesso será removido e seu plano passará para CANCELED. Você
+        perderá o acesso à sua conta.
+      </p>
+
+      @if (state() === 'error') {
+        <p class="error-message" role="alert" aria-live="assertive">{{ errorMessage() }}</p>
+      }
+
+      @if (token) {
+        <div class="actions">
+          <button
+            class="cancel-button"
+            type="button"
+            [disabled]="state() === 'submitting'"
+            (click)="confirmCancellation()"
+          >
+            @if (state() === 'submitting') {
+              <span class="spinner" aria-hidden="true"></span>
+              Cancelando…
+            } @else {
+              Sim, cancelar minha conta
+            }
+          </button>
+          <a class="secondary-link" routerLink="/cadastro">Não, voltar</a>
+        </div>
+      } @else {
+        <a class="primary-link" routerLink="/cadastro">Voltar ao início</a>
+      }
+    }
+  </section>
+</main>
