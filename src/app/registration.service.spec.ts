@@ -111,5 +111,6 @@ describe('RegistrationService', () => {
       .flush({ success: false, message: 'Token não encontrado.' });
 
     expect(receivedError).toBeInstanceOf(CancellationError);
+    expect(receivedError).toMatchObject({ message: 'Token não encontrado.' });
   });
 });

@@ -106,7 +106,8 @@ export class RegistrationService {
         }
 
         throw new CancellationError(
-          'Não foi possível confirmar o cancelamento. Tente novamente mais tarde.',
+          readMessage(result) ??
+            'Não foi possível confirmar o cancelamento. Tente novamente mais tarde.',
         );
       }),
       catchError((error: unknown) => {
@@ -114,10 +115,12 @@ export class RegistrationService {
           return throwError(() => error);
         }
         if (error instanceof HttpErrorResponse) {
+          const responseMessage = readMessage(asRecord(error.error));
           return throwError(
             () =>
               new CancellationError(
-                'Não foi possível conectar ao serviço de cancelamento. Tente novamente mais tarde.',
+                responseMessage ??
+                  'Não foi possível conectar ao serviço de cancelamento. Tente novamente mais tarde.',
               ),
           );
         }
