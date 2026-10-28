@@ -1,7 +1,7 @@
-<main class="mx-auto flex min-h-screen w-[calc(100%-2rem)] max-w-[1160px] flex-col max-[420px]:w-[calc(100%-1.75rem)]">
+<main class="mx-auto flex min-h-screen w-[calc(100%-2rem)] max-w-290 flex-col max-[420px]:w-[calc(100%-1.75rem)]">
   <header class="flex items-center gap-3 pt-7">
     <a
-      class="grid size-[68px] shrink-0 place-items-center overflow-hidden rounded-xl border border-[#e6eae2] bg-white"
+      class="grid size-17 shrink-0 place-items-center overflow-hidden rounded-xl border border-[#e6eae2] bg-white"
       routerLink="/cadastro"
       aria-label="AgroBulletins, ir para o cadastro"
     >
@@ -25,22 +25,22 @@
   >
     <div class="flex flex-col justify-center py-6 max-[800px]:py-4">
       <p class="m-0 flex items-center gap-2 text-[11px] font-bold tracking-[0.14em] text-[#52705e]">
-        <span class="size-[7px] rounded-full bg-[#8ca66b]"></span>
+        <span class="size-1.75 rounded-full bg-[#8ca66b]"></span>
         INFORMAÇÃO PARA O CAMPO
       </p>
-      <h1 class="my-[22px] max-w-[560px] text-[clamp(42px,5.1vw,64px)] leading-[1.06] font-medium tracking-[-0.055em] text-[#193b2c] max-[800px]:max-w-[540px] max-[800px]:text-[clamp(42px,9vw,58px)]">
+      <h1 class="my-5.5 max-w-140 text-[clamp(42px,5.1vw,64px)] leading-[1.06] font-medium tracking-[-0.055em] text-[#193b2c] max-[800px]:max-w-135 max-[800px]:text-[clamp(42px,9vw,58px)]">
         Decisões mais claras, <em class="font-medium text-[#638351]">colheitas mais fortes.</em>
       </h1>
-      <p class="m-0 max-w-[440px] text-base leading-[1.7] text-[#617168]">
+      <p class="m-0 max-w-110 text-base leading-[1.7] text-[#617168]">
         Receba informações e ferramentas para apoiar as decisões do seu negócio agrícola.
         Sua conta começa com um plano de teste.
       </p>
     </div>
 
-    <section class="w-full rounded-[20px] border border-[#e6eae2] bg-white p-9 shadow-[0_20px_60px_rgb(31_58_41_/_7%)] max-[800px]:p-7 max-[420px]:px-5 max-[420px]:py-6">
+    <section class="w-full rounded-[20px] border border-[#e6eae2] bg-white p-9 shadow-[0_20px_60px_rgb(31_58_41/7%)] max-[800px]:p-7 max-[420px]:px-5 max-[420px]:py-6">
       <div>
         <p class="m-0 text-[11px] font-bold tracking-[0.14em] text-[#52705e]">CRIE SUA CONTA</p>
-        <h2 id="register-title" class="my-[11px] text-[32px] font-medium tracking-[-0.04em] text-[#203e2f]">
+        <h2 id="register-title" class="my-2.75 text-[32px] font-medium tracking-[-0.04em] text-[#203e2f]">
           Comece hoje
         </h2>
         <p class="m-0 text-sm leading-[1.6] text-[#68756c]">
@@ -57,7 +57,7 @@
           role="alert"
           aria-live="assertive"
         >
-          <span class="grid size-[19px] shrink-0 place-items-center rounded-full border border-current text-xs font-extrabold" aria-hidden="true">
+          <span class="grid size-4.75 shrink-0 place-items-center rounded-full border border-current text-xs font-extrabold" aria-hidden="true">
             {{ notice.kind === 'duplicate' ? '!' : '×' }}
           </span>
           <p class="m-0 text-[13px] leading-normal">{{ notice.message }}</p>
@@ -68,7 +68,7 @@
         <div class="mt-5 grid gap-2 first:mt-0">
           <label class="text-[13px] font-semibold text-[#34483b]" for="nome">Nome completo</label>
           <input
-            class="min-h-12 w-full rounded-[9px] border border-[#d9e0d8] bg-white px-3.5 text-sm text-[#20392c] placeholder:text-[#929d95] focus:border-[#52775d] focus:outline-[3px] focus:outline-[#52775d]/15 aria-[invalid=true]:border-[#a83b36]"
+            class="min-h-12 w-full rounded-[9px] border border-[#d9e0d8] bg-white px-3.5 text-sm text-[#20392c] placeholder:text-[#929d95] focus:border-[#52775d] focus:outline-[3px] focus:outline-[#52775d]/15 aria-invalid:border-[#a83b36]"
             id="nome"
             formControlName="nome"
             type="text"
@@ -87,7 +87,7 @@
         <div class="mt-5 grid gap-2">
           <label class="text-[13px] font-semibold text-[#34483b]" for="whatsapp">WhatsApp</label>
           <input
-            class="min-h-12 w-full rounded-[9px] border border-[#d9e0d8] bg-white px-3.5 text-sm text-[#20392c] placeholder:text-[#929d95] focus:border-[#52775d] focus:outline-[3px] focus:outline-[#52775d]/15 aria-[invalid=true]:border-[#a83b36]"
+            class="min-h-12 w-full rounded-[9px] border border-[#d9e0d8] bg-white px-3.5 text-sm text-[#20392c] placeholder:text-[#929d95] focus:border-[#52775d] focus:outline-[3px] focus:outline-[#52775d]/15 aria-invalid:border-[#a83b36]"
             id="whatsapp"
             formControlName="whatsapp"
             type="tel"
@@ -107,7 +107,7 @@
         <div class="mt-5 grid gap-2">
           <label class="text-[13px] font-semibold text-[#34483b]" for="email">E-mail</label>
           <input
-            class="min-h-12 w-full rounded-[9px] border border-[#d9e0d8] bg-white px-3.5 text-sm text-[#20392c] placeholder:text-[#929d95] focus:border-[#52775d] focus:outline-[3px] focus:outline-[#52775d]/15 aria-[invalid=true]:border-[#a83b36]"
+            class="min-h-12 w-full rounded-[9px] border border-[#d9e0d8] bg-white px-3.5 text-sm text-[#20392c] placeholder:text-[#929d95] focus:border-[#52775d] focus:outline-[3px] focus:outline-[#52775d]/15 aria-invalid:border-[#a83b36]"
             id="email"
             formControlName="email"
             type="email"
@@ -124,7 +124,7 @@
         </div>
 
         <button
-          class="mt-6 flex min-h-[50px] w-full items-center justify-center gap-2.5 rounded-[9px] border-0 bg-[#24543b] text-sm font-bold text-white transition-[background,transform] duration-150 hover:-translate-y-px hover:bg-[#193f2c] disabled:cursor-wait disabled:opacity-75"
+          class="mt-6 flex min-h-12.5 w-full items-center justify-center gap-2.5 rounded-[9px] border-0 bg-[#24543b] text-sm font-bold text-white transition-[background,transform] duration-150 hover:-translate-y-px hover:bg-[#193f2c] disabled:cursor-wait disabled:opacity-75"
           type="submit"
           [disabled]="isSubmitting()"
         >
@@ -143,7 +143,7 @@
     </section>
   </section>
 
-  <footer class="flex items-center justify-between border-t border-[#e2e8e0] py-[18px] pb-[22px] text-[11px] text-[#758279] max-[420px]:gap-3 max-[420px]:text-[10px]">
+  <footer class="flex items-center justify-between border-t border-[#e2e8e0] py-4.5 pb-5.5 text-[11px] text-[#758279] max-[420px]:gap-3 max-[420px]:text-[10px]">
     <span>© AgroBulletins</span>
     <div class="flex items-center gap-4 max-[420px]:gap-2">
       <a class="text-[#52705e] underline decoration-[#b8c6b8] underline-offset-4 hover:text-[#24543b] focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#52775d]" routerLink="/privacidade">

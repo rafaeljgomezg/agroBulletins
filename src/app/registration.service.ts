@@ -9,8 +9,8 @@ export interface RegistrationPayload {
   nome: string;
   whatsapp: string;
   email: string;
-  plan: 'TRIAL';
-  status_pagamento: 'PREMIUM';
+  plan: 'TRIAL' | 'PREMIUM' | 'CANCELED' | 'EXPIRED';
+  status_pagamento: 'ACTIVE' | 'PENDING';
 }
 
 type ErrorKind = 'duplicate' | 'error';

@@ -48,7 +48,7 @@ export class Register {
           whatsapp,
           email: this.form.controls.email.value.trim(),
           plan: 'TRIAL',
-          status_pagamento: 'PREMIUM',
+          status_pagamento: 'ACTIVE',
         }),
       );
     } catch (error: unknown) {
